@@ -21,8 +21,15 @@ export class NegociacaoController{
 
         event.preventDefault();
 
+        let data = new Date(this._data.val().replace(/-/g, ','));
+
+        if(!this._diaUtil(data)){
+            this._mensagemView.update("Não é possível cadastrar negocição fora de dia úteis");
+            return;
+        }
+
         const negociacao = new Negociacao(
-            new Date(this._data.val().replace(/-/g, ',')),
+            data,
             parseInt(this._quantidade.val()),
             parseFloat(this._valor.val())
         );
@@ -43,4 +50,18 @@ export class NegociacaoController{
         console.log(negociacao);
         
     }
+
+    _diaUtil(data: Date){
+        return data.getDay() != DiaSemana.sabado && data.getDay() != DiaSemana.domingo;
+    }
+}
+
+enum DiaSemana{
+    domingo,
+    segunda,
+    terca,
+    quarta, 
+    quinta,
+    sexta,
+    sabado
 }
