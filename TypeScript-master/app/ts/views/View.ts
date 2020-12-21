@@ -5,7 +5,7 @@ export abstract class View<T>{
 
     constructor(seletor: string, escapar?: boolean){
         this._elemento = $(seletor);
-        this._escapar = escapar;
+        this._escapar = escapar = false;
     }
 
     update(model: T){
