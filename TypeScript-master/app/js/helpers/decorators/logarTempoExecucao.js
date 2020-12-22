@@ -11,7 +11,7 @@ System.register([], function (exports_1, context_1) {
                 const retorno = metodoOriginal.apply(this, args);
                 const tempo02 = performance.now();
                 console.log(`O retorno do metodo ${propertyKey} é ${JSON.stringify(retorno)}`);
-                console.log(`O metodo ${propertyKey} demorou ${tempo02 - tempo02} ms`);
+                console.log(`O metodo ${propertyKey} demorou ${tempo02 - tempo01} ms`);
                 return retorno;
             };
             return descriptor;
